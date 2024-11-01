@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    <!-- Lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Style pour l'icône de copie */
+        .copy-icon {
+            cursor: pointer; /* Changer le curseur pour indiquer que c'est cliquable */
+            margin-left: 10px; /* Espacement à gauche de l'icône */
+            color: #007bff; /* Couleur de l'icône */
+        }
+    </style>
 </head>
 <body>
     <h1>Mon Code Python</h1>
-    <pre><code class="language-python">
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Nov  1 13:32:24 2024
-
-@author: hp
-"""
-
+    <p>Voici mon code Python :</p>
+    
+    <!-- Code Python avec une icône de copie -->
+    <pre><code class="language-python" id="codePython">
 # Exemple de code Python
 def greet(name):
     return f"Hello, {name}!"
@@ -27,5 +32,26 @@ def greet(name):
 if __name__ == "__main__":
     print(greet("World"))
     </code></pre>
+    <i class="fas fa-copy copy-icon" onclick="copyToClipboard('codePython')"></i>
+
+    <script>
+        // Fonction pour copier le code dans le presse-papiers
+        function copyToClipboard(elementId) {
+            // Récupérer l'élément de code à partir de l'ID
+            const codeElement = document.getElementById(elementId);
+            const codeText = codeElement.innerText;
+
+            // Créer un élément textarea temporaire pour copier le texte
+            const textarea = document.createElement("textarea");
+            textarea.value = codeText; // Mettre le texte à copier
+            document.body.appendChild(textarea);
+            textarea.select(); // Sélectionner le texte
+            document.execCommand("copy"); // Exécuter la commande de copie
+            document.body.removeChild(textarea); // Retirer l'élément temporaire
+
+            // Optionnel : Alerter l'utilisateur que le code a été copié
+            alert("Code copié dans le presse-papiers !");
+        }
+    </script>
 </body>
 </html>
