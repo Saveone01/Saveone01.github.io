@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Mon Site</title>
+    <!-- Lien vers Prism.js pour la coloration syntaxique -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
 </head>
 <body>
     <header>
@@ -13,12 +17,24 @@
     <main>
         <p>Ce site contient mes projets, mes codes Python, et bien plus.</p>
         
-        <!-- Lien vers la page code.html -->
+        <!-- Première option : Lien vers code.html dans une balise nav -->
+        <h2>Deuxième option</h2>
         <nav>
-            <ul>
-                <li><a href="code.html">Voir les codes Python</a></li>
-            </ul>
+            <p>Vous pouvez <a href="code.html">voir les codes Python ici</a>.</p>
         </nav>
+
+        <!-- Affichage du code Python directement sur la page -->
+        <h2>Codes Python</h2>
+        <p>Voici quelques exemples de codes Python :</p>
+        <pre><code class="language-python">
+# Exemple de code Python
+def hello_world():
+    print("Hello, World!")
+
+# Une autre fonction
+def add_numbers(a, b):
+    return a + b
+        </code></pre>
     </main>
 
     <footer>
