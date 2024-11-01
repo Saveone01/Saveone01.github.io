@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Mon Site</title>
+    
     <!-- Lien vers Prism.js pour la coloration syntaxique -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    
+    <!-- Lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Style pour l'icône de copie */
+        .copy-icon {
+            cursor: pointer; /* Changer le curseur pour indiquer que c'est cliquable */
+            margin-left: 10px; /* Espacement à gauche de l'icône */
+            color: #007bff; /* Couleur de l'icône */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,24 +29,31 @@
     <main>
         <p>Ce site contient mes projets, mes codes Python, et bien plus.</p>
         
-        <!-- Première option : Lien vers code.html dans une balise nav -->
+        <!-- Lien vers un autre fichier HTML contenant du code -->
         <h2>Deuxième option</h2>
         <nav>
             <p>Vous pouvez <a href="code.html">voir les codes Python ici</a>.</p>
         </nav>
 
-        <!-- Affichage du code Python directement sur la page -->
+        <!-- Section pour afficher des exemples de code Python -->
         <h2>Codes Python</h2>
         <p>Voici quelques exemples de codes Python :</p>
-        <pre><code class="language-python">
+        
+        <!-- Premier exemple de code Python avec option de copie -->
+        <pre><code class="language-python" id="code1">
 # Exemple de code Python
 def hello_world():
     print("Hello, World!")
+        </code></pre>
+        <i class="fas fa-copy copy-icon" onclick="copyToClipboard('code1')"></i>
 
+        <!-- Deuxième exemple de code Python avec option de copie -->
+        <pre><code class="language-python" id="code2">
 # Une autre fonction
 def add_numbers(a, b):
     return a + b
         </code></pre>
+        <i class="fas fa-copy copy-icon" onclick="copyToClipboard('code2')"></i>
         
         <p>Voici mon code Python3 : <a href="mon_code.html">voir ici</a>.</p>
 
@@ -43,5 +62,25 @@ def add_numbers(a, b):
     <footer>
         <p>&copy; 2024 Saveone01. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        // Fonction pour copier le code dans le presse-papiers
+        function copyToClipboard(elementId) {
+            // Récupérer l'élément de code à partir de l'ID
+            const codeElement = document.getElementById(elementId);
+            const codeText = codeElement.innerText;
+
+            // Créer un élément textarea temporaire pour copier le texte
+            const textarea = document.createElement("textarea");
+            textarea.value = codeText; // Mettre le texte à copier
+            document.body.appendChild(textarea);
+            textarea.select(); // Sélectionner le texte
+            document.execCommand("copy"); // Exécuter la commande de copie
+            document.body.removeChild(textarea); // Retirer l'élément temporaire
+
+            // Optionnel : Alerter l'utilisateur que le code a été copié
+            alert("Code copié dans le presse-papiers !");
+        }
+    </script>
 </body>
 </html>
